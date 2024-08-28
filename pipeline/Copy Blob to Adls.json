@@ -16,99 +16,35 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "JsonSource",
+						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
+							"recursive": true
 						},
 						"formatSettings": {
-							"type": "JsonReadSettings"
+							"type": "BinaryReadSettings",
+							"compressionProperties": {
+								"type": "ZipDeflateReadSettings"
+							}
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['id']"
-								},
-								"sink": {
-									"name": "id"
-								}
-							},
-							{
-								"source": {
-									"path": "$['name']"
-								},
-								"sink": {
-									"name": "name"
-								}
-							},
-							{
-								"source": {
-									"path": "$['details']['age']"
-								},
-								"sink": {
-									"name": "age"
-								}
-							},
-							{
-								"source": {
-									"path": "$['details']['address']['city']"
-								},
-								"sink": {
-									"name": "city"
-								}
-							},
-							{
-								"source": {
-									"path": "$['details']['address']['state']"
-								},
-								"sink": {
-									"name": "state"
-								}
-							},
-							{
-								"source": {
-									"path": "$['details']['contacts'][0]['type']"
-								},
-								"sink": {
-									"name": "type"
-								}
-							},
-							{
-								"source": {
-									"path": "$['details']['contacts'][0]['value']"
-								},
-								"sink": {
-									"name": "value"
-								}
-							}
-						]
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_json",
+						"referenceName": "Binary1",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CSV_output",
+						"referenceName": "Binary2",
 						"type": "DatasetReference"
 					}
 				]
