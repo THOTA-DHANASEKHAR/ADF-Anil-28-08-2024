@@ -28,6 +28,7 @@
 								"value": "@startOfDay(utcnow())",
 								"type": "Expression"
 							},
+							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
