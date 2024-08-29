@@ -1,9 +1,9 @@
 {
-	"name": "CSV",
+	"name": "filename_EMP",
 	"properties": {
 		"activities": [
 			{
-				"name": "CSV",
+				"name": "Copy data from EMP",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -20,6 +20,15 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
+							"modifiedDatetimeStart": {
+								"value": "@addhours(startOfDay(adddays(utcnow(),-1)),15)",
+								"type": "Expression"
+							},
+							"modifiedDatetimeEnd": {
+								"value": "@addhours(startOfDay(utcnow()),15)",
+								"type": "Expression"
+							},
+							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -55,7 +64,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText2",
+						"referenceName": "EMP_output",
 						"type": "DatasetReference"
 					}
 				]
