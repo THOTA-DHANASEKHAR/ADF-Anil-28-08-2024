@@ -10,10 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@concat('EMEA','/', formatdatetime(utcnow(),'yyyy'), '/',                 formatdatetime(utcnow(),'MM'), '/',                 formatdatetime(utcnow(),'dd'))",
-					"type": "Expression"
-				},
+				"folderPath": "for",
 				"fileSystem": "output"
 			},
 			"columnDelimiter": ",",
