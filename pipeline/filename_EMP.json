@@ -53,7 +53,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Current_file": {
-								"value": "@pipeline().parameters.Plsenterfile _name",
+								"value": "@pipeline().parameters.Plsenterfile_name",
 								"type": "Expression"
 							}
 						}
@@ -68,8 +68,13 @@
 			}
 		],
 		"parameters": {
-			"Plsenterfile _name": {
+			"Plsenterfile_name": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"A": {
+				"type": "String"
 			}
 		},
 		"folder": {
