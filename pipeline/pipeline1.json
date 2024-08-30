@@ -124,7 +124,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@and(less(activity('Get Metadata2').output.size,variables('size')),equals(activity('Get Metadata2').output.itemType,'file'))",
+									"value": "@and(less(activity('Get Metadata2').output.size,variables('size')),equals(activity('Get Metadata2').output.itemType,'File'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -146,7 +146,7 @@
 										}
 									},
 									{
-										"name": "Set variable2",
+										"name": "filename",
 										"type": "SetVariable",
 										"dependsOn": [],
 										"policy": {
@@ -247,7 +247,7 @@
 			},
 			"size": {
 				"type": "Integer",
-				"defaultValue": 0
+				"defaultValue": 10000000
 			},
 			"file": {
 				"type": "String",
