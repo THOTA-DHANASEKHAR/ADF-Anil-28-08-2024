@@ -124,7 +124,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('Get Metadata2').output.size,variables('size'))",
+									"value": "@and(less(activity('Get Metadata2').output.size,variables('size')),equals(activity('Get Metadata2').output.itemType,'file'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
