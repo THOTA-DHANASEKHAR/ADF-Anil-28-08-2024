@@ -20,15 +20,6 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"modifiedDatetimeStart": {
-								"value": "@addhours(startOfDay(adddays(utcnow(),-1)),15)",
-								"type": "Expression"
-							},
-							"modifiedDatetimeEnd": {
-								"value": "@addhours(startOfDay(utcnow()),15)",
-								"type": "Expression"
-							},
-							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -59,7 +50,13 @@
 				"inputs": [
 					{
 						"referenceName": "EMP_input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Current_file": {
+								"value": "@pipeline().parameters.Plsenterfile _name",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -70,6 +67,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"Plsenterfile _name": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Copy"
 		},
