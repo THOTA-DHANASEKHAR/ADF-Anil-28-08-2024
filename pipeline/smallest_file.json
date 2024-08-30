@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "smallest_file",
 	"properties": {
 		"activities": [
 			{
@@ -124,7 +124,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@and(less(activity('Get Metadata2').output.size,variables('size')),equals(activity('Get Metadata2').output.itemType,'File'))",
+									"value": "@and(\n    equals(activity('Get Metadata2').output.itemType, 'File'),less(activity('Get Metadata2').output.size, variables('size'))\n)",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
