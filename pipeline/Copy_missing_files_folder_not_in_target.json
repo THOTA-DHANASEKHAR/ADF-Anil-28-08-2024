@@ -119,7 +119,7 @@
 								},
 								"ifFalseActivities": [
 									{
-										"name": "Copy data1_copy1",
+										"name": "Copy folder",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
