@@ -62,6 +62,7 @@
 			},
 			{
 				"name": "Filter",
+				"description": "filter the files are not in target",
 				"type": "Filter",
 				"dependsOn": [
 					{
