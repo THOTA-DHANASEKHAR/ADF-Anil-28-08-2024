@@ -1,5 +1,5 @@
 {
-	"name": "Copy_file_count",
+	"name": "Copy_files_count",
 	"properties": {
 		"activities": [
 			{
@@ -54,6 +54,12 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
 		"variables": {
