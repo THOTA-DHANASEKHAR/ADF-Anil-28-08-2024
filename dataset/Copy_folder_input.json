@@ -1,5 +1,5 @@
 {
-	"name": "missingfiles_folder",
+	"name": "Copy_folder_input",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -9,6 +9,9 @@
 			"Folder_name": {
 				"type": "string"
 			}
+		},
+		"folder": {
+			"name": "Copy_missing_files_folder_not_in_target"
 		},
 		"annotations": [],
 		"type": "DelimitedText",

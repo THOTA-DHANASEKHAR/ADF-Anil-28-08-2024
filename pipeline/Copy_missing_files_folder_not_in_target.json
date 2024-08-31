@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "srcfl_notintrgt_inpt",
+						"referenceName": "Getmetadata_source",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -45,7 +45,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "srcfl_notintrgt_output",
+						"referenceName": "Getmetadata_target",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -166,7 +166,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "missingfiles_folder",
+												"referenceName": "Copy_folder_input",
 												"type": "DatasetReference",
 												"parameters": {
 													"Folder_name": {
@@ -178,7 +178,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "EMP_output",
+												"referenceName": "Copy_folder_output",
 												"type": "DatasetReference",
 												"parameters": {
 													"folder1": "@item().name"
@@ -235,7 +235,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "EMP_input",
+												"referenceName": "Copy_file_input",
 												"type": "DatasetReference",
 												"parameters": {
 													"Current_file": {
@@ -247,7 +247,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "EMP_output_copy1",
+												"referenceName": "Copy_file_output",
 												"type": "DatasetReference"
 											}
 										]

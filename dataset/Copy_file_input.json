@@ -1,5 +1,5 @@
 {
-	"name": "EMP_input",
+	"name": "Copy_file_input",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

@@ -1,5 +1,5 @@
 {
-	"name": "srcfl_notintrgt_inpt",
+	"name": "Getmetadata_source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

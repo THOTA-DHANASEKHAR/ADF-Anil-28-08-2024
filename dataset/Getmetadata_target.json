@@ -1,5 +1,5 @@
 {
-	"name": "srcfl_notintrgt_output",
+	"name": "Getmetadata_target",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

@@ -1,5 +1,5 @@
 {
-	"name": "EMP_output_copy1",
+	"name": "Copy_file_output",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

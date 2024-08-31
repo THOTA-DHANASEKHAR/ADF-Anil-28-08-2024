@@ -49,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "EMP_input",
+						"referenceName": "Copy_file_input",
 						"type": "DatasetReference",
 						"parameters": {
 							"Current_file": {
@@ -61,7 +61,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "EMP_output",
+						"referenceName": "Copy_folder_output",
 						"type": "DatasetReference"
 					}
 				]
