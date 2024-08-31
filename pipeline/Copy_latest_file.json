@@ -230,7 +230,13 @@
 				"outputs": [
 					{
 						"referenceName": "Copy_folder_output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"folder1": {
+								"value": "@variables('filename')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
