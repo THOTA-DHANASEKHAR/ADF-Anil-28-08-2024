@@ -1,5 +1,5 @@
 {
-	"name": "pl_srcfl-notin_trgtfl",
+	"name": "Copy_missing_files_folder_not_in_target",
 	"properties": {
 		"activities": [
 			{
@@ -260,7 +260,7 @@
 			}
 		],
 		"folder": {
-			"name": "Copy"
+			"name": "Copy_missing_files_folder_not_in_target"
 		},
 		"annotations": []
 	}
