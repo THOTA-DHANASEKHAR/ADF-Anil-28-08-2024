@@ -61,7 +61,7 @@
 				}
 			},
 			{
-				"name": "Filter1",
+				"name": "Filter",
 				"type": "Filter",
 				"dependsOn": [
 					{
@@ -80,21 +80,21 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
+						"value": "@activity('source_files').output.childItems",
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@not(contains(activity('Get Metadata2').output.childItems, item()))",
+						"value": "@not(contains(activity('sink_files').output.childItems, item()))",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEach",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Filter1",
+						"activity": "Filter",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -103,12 +103,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Filter1').output.value",
+						"value": "@activity('Filter').output.value",
 						"type": "Expression"
 					},
 					"activities": [
 						{
-							"name": "If Condition1",
+							"name": "If Condition",
 							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
