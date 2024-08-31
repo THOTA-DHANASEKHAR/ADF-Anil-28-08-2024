@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "source_files",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -32,7 +32,7 @@
 				}
 			},
 			{
-				"name": "Get Metadata2",
+				"name": "sink_files",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -65,13 +65,13 @@
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata2",
+						"activity": "sink_files",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "Get Metadata1",
+						"activity": "source_files",
 						"dependencyConditions": [
 							"Succeeded"
 						]
