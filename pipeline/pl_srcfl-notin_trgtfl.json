@@ -179,7 +179,10 @@
 										"outputs": [
 											{
 												"referenceName": "EMP_output",
-												"type": "DatasetReference"
+												"type": "DatasetReference",
+												"parameters": {
+													"folder1": "@item().name"
+												}
 											}
 										]
 									}
