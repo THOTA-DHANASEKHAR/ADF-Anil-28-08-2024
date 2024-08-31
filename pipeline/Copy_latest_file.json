@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_source1",
+						"referenceName": "Getmetadata_source_folder",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
