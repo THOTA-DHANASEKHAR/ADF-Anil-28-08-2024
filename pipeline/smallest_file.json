@@ -281,6 +281,9 @@
 			},
 			"filename": {
 				"type": "String"
+			},
+			"fname": {
+				"type": "String"
 			}
 		},
 		"folder": {

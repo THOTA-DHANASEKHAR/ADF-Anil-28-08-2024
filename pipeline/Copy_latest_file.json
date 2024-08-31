@@ -217,11 +217,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Copy_file_input",
+						"referenceName": "Copy_file_input_latest",
 						"type": "DatasetReference",
 						"parameters": {
 							"Current_file": {
-								"value": "@variables('lastModified')",
+								"value": "@variables('filename')",
 								"type": "Expression"
 							}
 						}
@@ -229,14 +229,8 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Copy_folder_output",
-						"type": "DatasetReference",
-						"parameters": {
-							"folder1": {
-								"value": "@variables('filename')",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "Copy_file_output_latest",
+						"type": "DatasetReference"
 					}
 				]
 			},
