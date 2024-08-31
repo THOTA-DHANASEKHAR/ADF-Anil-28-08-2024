@@ -49,7 +49,7 @@
 						"value": "@activity('Filter').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "fname",
@@ -90,7 +90,13 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "Getmetadata_source_file",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"fname1": {
+											"value": "@variables('fname')",
+											"type": "Expression"
+										}
+									}
 								},
 								"fieldList": [
 									"lastModified",
