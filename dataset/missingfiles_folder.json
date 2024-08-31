@@ -1,19 +1,25 @@
 {
-	"name": "EMP_output",
+	"name": "missingfiles_folder",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
-		"folder": {
-			"name": "Copy"
+		"parameters": {
+			"Folder_name": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "output"
+				"folderPath": {
+					"value": "@dataset().Folder_name",
+					"type": "Expression"
+				},
+				"fileSystem": "input"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
