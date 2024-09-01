@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -48,11 +49,19 @@
 						"value": "@activity('Get Metadata1').output.childItems",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Set variable",
 							"type": "SetVariable",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"secureOutput": false,
 								"secureInput": false
@@ -61,7 +70,24 @@
 							"typeProperties": {
 								"variableName": "filename_extension",
 								"value": {
-									"value": "@if(\n    contains(variables(item().name), '.csv'), 'csv',\n    if(\n        contains(variables(item().name), '.json'), 'json',\n        if(\n            contains(variables(item().name), '.txt'), 'txt',\n            if(\n                contains(variables(item().name), '.zip'), 'zip',\n                'unknown' \n            )\n        )\n    )\n)",
+									"value": "@substring(variables('a'),add(lastIndexOf(variables('a'),'.'), 1),sub(length(variables('a')),add(lastIndexOf(variables('a'),'.'),1)))",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "a",
+								"value": {
+									"value": "@item().name",
 									"type": "Expression"
 								}
 							}
@@ -72,6 +98,9 @@
 		],
 		"variables": {
 			"filename_extension": {
+				"type": "String"
+			},
+			"a": {
 				"type": "String"
 			}
 		},
