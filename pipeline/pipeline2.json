@@ -52,11 +52,11 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Set variable",
+							"name": "filename_extension",
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "Set variable1",
+									"activity": "File_name",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -70,13 +70,13 @@
 							"typeProperties": {
 								"variableName": "filename_extension",
 								"value": {
-									"value": "@substring(variables('a'),add(lastIndexOf(variables('a'),'.'), 1),sub(length(variables('a')),add(lastIndexOf(variables('a'),'.'),1)))",
+									"value": "@substring(variables('File_Name'),add(lastIndexOf(variables('File_Name'),'.'), 1),sub(length(variables('File_Name')),add(lastIndexOf(variables('File_Name'),'.'),1)))",
 									"type": "Expression"
 								}
 							}
 						},
 						{
-							"name": "Set variable1",
+							"name": "File_name",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
@@ -85,12 +85,96 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "a",
+								"variableName": "File_Name",
 								"value": {
 									"value": "@item().name",
 									"type": "Expression"
 								}
 							}
+						},
+						{
+							"name": "File_formate",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "File_name",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "File_formate",
+								"value": {
+									"value": "@if(\n    contains(variables('File_Name'), '.csv'), \n    'csv', \n    if(\n        contains(variables('File_Name'), '.json'), \n        'json', \n        if(\n            contains(variables('File_Name'), '.txt'), \n            'txt', \n            if(\n                contains(variables('File_Name'), '.zip'), \n                'zip', \n                'unknown' \n            )\n        )\n    )\n)",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "filename_extension",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings",
+										"compressionProperties": {
+											"type": "ZipDeflateReadSettings"
+										}
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "Binary1",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Binary2",
+									"type": "DatasetReference",
+									"parameters": {
+										"File_path": {
+											"value": "@variables('filename_extension')",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
 					]
 				}
@@ -101,6 +185,12 @@
 				"type": "String"
 			},
 			"a": {
+				"type": "String"
+			},
+			"File_Name": {
+				"type": "String"
+			},
+			"File_formate": {
 				"type": "String"
 			}
 		},
