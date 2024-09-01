@@ -103,7 +103,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(activity('Get Metadata file level').output.size, variables('size'))\n",
+									"value": "@greater(activity('Get Metadata file level').output.size, variables('size'))\n",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -181,7 +181,10 @@
 		"variables": {
 			"size": {
 				"type": "Integer",
-				"defaultValue": 508
+				"defaultValue": 1310
+			},
+			"filename_extension": {
+				"type": "String"
 			}
 		},
 		"folder": {

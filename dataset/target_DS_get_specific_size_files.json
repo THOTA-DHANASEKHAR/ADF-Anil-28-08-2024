@@ -14,7 +14,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"folderPath": "get_specific_size_files",
-				"container": "sink"
+				"container": "output"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
