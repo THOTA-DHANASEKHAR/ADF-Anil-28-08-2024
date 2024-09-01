@@ -143,10 +143,7 @@
 										"recursive": true
 									},
 									"formatSettings": {
-										"type": "BinaryReadSettings",
-										"compressionProperties": {
-											"type": "ZipDeflateReadSettings"
-										}
+										"type": "BinaryReadSettings"
 									}
 								},
 								"sink": {
@@ -160,7 +157,13 @@
 							"inputs": [
 								{
 									"referenceName": "Binary1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"file_name": {
+											"value": "@variables('File_Name')",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
