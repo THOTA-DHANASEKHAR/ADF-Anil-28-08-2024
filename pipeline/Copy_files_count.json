@@ -141,6 +141,9 @@
 				"type": "Integer"
 			}
 		},
+		"folder": {
+			"name": "copy_files_count"
+		},
 		"annotations": []
 	}
 }
