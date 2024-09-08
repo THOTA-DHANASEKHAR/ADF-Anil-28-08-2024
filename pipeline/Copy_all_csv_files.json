@@ -1,9 +1,9 @@
 {
-	"name": "Copy_EMP_file_adls_to_adls",
+	"name": "Copy_all_csv_files",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data from EMP",
+				"name": "Copy_only_csv_files",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -20,6 +20,7 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
+							"wildcardFileName": "*.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -49,25 +50,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Copy_file_input",
+						"referenceName": "source_copy_only_csv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Copy_folder_output",
+						"referenceName": "sink_copy_only_csv",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
-		"variables": {
-			"A": {
-				"type": "String"
-			}
-		},
 		"folder": {
-			"name": "Copy"
+			"name": "Copy_all_csv_files"
 		},
 		"annotations": []
 	}
