@@ -68,7 +68,7 @@
 			}
 		],
 		"parameters": {
-			"Plsenterfile_name": {
+			"Please_enter_file_name": {
 				"type": "string"
 			}
 		},
