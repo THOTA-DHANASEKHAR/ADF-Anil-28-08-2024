@@ -1,5 +1,5 @@
 {
-	"name": "Copy_all_csv_files",
+	"name": "Copy_only_csv_files",
 	"properties": {
 		"activities": [
 			{
@@ -63,7 +63,7 @@
 			}
 		],
 		"folder": {
-			"name": "Copy_all_csv_files"
+			"name": "Copy_only_csv_files"
 		},
 		"annotations": []
 	}

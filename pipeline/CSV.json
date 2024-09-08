@@ -62,13 +62,7 @@
 							"inputs": [
 								{
 									"referenceName": "Copy_file_input",
-									"type": "DatasetReference",
-									"parameters": {
-										"Current_file": {
-											"value": "@item()",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
