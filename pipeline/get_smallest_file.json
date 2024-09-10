@@ -223,7 +223,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "copy_final_input",
+						"referenceName": "source_DS_get_smallest_file",
 						"type": "DatasetReference",
 						"parameters": {
 							"fn": {
@@ -235,7 +235,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Copy_folder_output",
+						"referenceName": "target_DS_get_smallest_file",
 						"type": "DatasetReference"
 					}
 				]
