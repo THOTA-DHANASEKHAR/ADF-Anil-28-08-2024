@@ -1,5 +1,5 @@
 {
-	"name": "smallest_file",
+	"name": "get_smallest_file",
 	"properties": {
 		"activities": [
 			{
@@ -308,7 +308,7 @@
 			}
 		},
 		"folder": {
-			"name": "Copy"
+			"name": "get_smallest_file"
 		},
 		"annotations": []
 	}
