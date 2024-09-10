@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Copy_yesterday_input",
+						"referenceName": "metadata_DS_get_smallest_file",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -89,11 +89,11 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "Copy_file_input",
+									"referenceName": "source_DS_get_smallest_file",
 									"type": "DatasetReference",
 									"parameters": {
-										"filename1": {
-											"value": "@item().name",
+										"fn": {
+											"value": "@variables('A')",
 											"type": "Expression"
 										}
 									}

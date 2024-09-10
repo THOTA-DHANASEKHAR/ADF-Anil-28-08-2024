@@ -11,7 +11,7 @@
 			}
 		},
 		"folder": {
-			"name": "specific_file_size"
+			"name": "get_specific_file_size"
 		},
 		"annotations": [],
 		"type": "DelimitedText",

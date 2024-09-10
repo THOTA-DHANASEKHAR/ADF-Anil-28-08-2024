@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Copy"
+			"name": "get_smallest_file"
 		},
 		"annotations": [],
 		"type": "DelimitedText",

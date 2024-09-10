@@ -1,5 +1,5 @@
 {
-	"name": "Copy_files_based_on_count",
+	"name": "Copy_files_based_on_file_count",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_source_file1",
+						"referenceName": "meta_DS_input_copy_files_based_on_file_count",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -33,7 +33,7 @@
 				}
 			},
 			{
-				"name": "Files_count",
+				"name": "File_count",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -61,7 +61,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Files_count",
+						"activity": "File_count",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -122,13 +122,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "copy_source_files_count",
+									"referenceName": "source_DS_copy_files_based_on_file_count",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "copy_output",
+									"referenceName": "Target_copy_files_based_on_file_count",
 									"type": "DatasetReference"
 								}
 							]
@@ -143,7 +143,7 @@
 			}
 		},
 		"folder": {
-			"name": "copy_files_based_on_count"
+			"name": "copy_files_based_on_file_count"
 		},
 		"annotations": []
 	}
