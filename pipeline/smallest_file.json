@@ -93,13 +93,11 @@
 									"type": "DatasetReference"
 								},
 								"fieldList": [
-									"size",
-									"itemType",
-									"itemName"
+									"itemName",
+									"size"
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -121,7 +119,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@and(\n    equals(activity('Get Metadata2').output.itemType, 'File'),less(activity('Get Metadata2').output.size, variables('size'))\n)",
+									"value": "@less(activity('Get Metadata2').output.size, variables('size'))\n",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -220,7 +218,13 @@
 				"inputs": [
 					{
 						"referenceName": "Copy_file_input",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@variables('filename')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [

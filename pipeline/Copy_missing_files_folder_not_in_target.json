@@ -182,10 +182,7 @@
 										"outputs": [
 											{
 												"referenceName": "Copy_folder_output",
-												"type": "DatasetReference",
-												"parameters": {
-													"folder1": "@item().name"
-												}
+												"type": "DatasetReference"
 											}
 										]
 									}
@@ -239,13 +236,7 @@
 										"inputs": [
 											{
 												"referenceName": "Copy_file_input",
-												"type": "DatasetReference",
-												"parameters": {
-													"Current_file": {
-														"value": "@item().name",
-														"type": "Expression"
-													}
-												}
+												"type": "DatasetReference"
 											}
 										],
 										"outputs": [
