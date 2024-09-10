@@ -1,17 +1,14 @@
 {
-	"name": "Copy_file_input",
+	"name": "copy_final_input",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"filename1": {
+			"fn": {
 				"type": "string"
 			}
-		},
-		"folder": {
-			"name": "Copy_missing_files_folder_not_in_target"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
@@ -19,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().filename1",
+					"value": "@dataset().fn",
 					"type": "Expression"
 				},
 				"fileSystem": "input"

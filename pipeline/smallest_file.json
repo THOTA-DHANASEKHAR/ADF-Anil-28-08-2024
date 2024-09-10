@@ -90,7 +90,13 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "Copy_file_input",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"filename1": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								},
 								"fieldList": [
 									"itemName",
@@ -217,11 +223,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Copy_file_input",
+						"referenceName": "copy_final_input",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": {
-								"value": "@variables('filename')",
+							"fn": {
+								"value": "@variables('file')",
 								"type": "Expression"
 							}
 						}
@@ -256,6 +262,30 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "test",
+					"value": {
+						"value": "@variables('file')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
@@ -267,14 +297,13 @@
 				"type": "Integer",
 				"defaultValue": 10000000
 			},
-			"file": {
-				"type": "String",
-				"defaultValue": "CC"
-			},
 			"filename": {
 				"type": "String"
 			},
-			"fname": {
+			"file": {
+				"type": "String"
+			},
+			"test": {
 				"type": "String"
 			}
 		},
