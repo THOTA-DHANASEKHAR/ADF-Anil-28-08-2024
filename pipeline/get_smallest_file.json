@@ -52,7 +52,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Set variable1",
+							"name": "A",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
@@ -73,7 +73,7 @@
 							"type": "GetMetadata",
 							"dependsOn": [
 								{
-									"activity": "Set variable1",
+									"activity": "A",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -89,7 +89,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "source_DS_get_smallest_file",
+									"referenceName": "metadata2_DS_get_smallest_file",
 									"type": "DatasetReference",
 									"parameters": {
 										"fn": {
@@ -104,6 +104,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -147,7 +148,7 @@
 										}
 									},
 									{
-										"name": "filename",
+										"name": "file",
 										"type": "SetVariable",
 										"dependsOn": [],
 										"policy": {
@@ -223,7 +224,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "source_DS_get_smallest_file",
+						"referenceName": "metadata2_DS_get_smallest_file",
 						"type": "DatasetReference",
 						"parameters": {
 							"fn": {

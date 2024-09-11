@@ -1,5 +1,5 @@
 {
-	"name": "source_DS_get_smallest_file",
+	"name": "metadata2_DS_get_smallest_file",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

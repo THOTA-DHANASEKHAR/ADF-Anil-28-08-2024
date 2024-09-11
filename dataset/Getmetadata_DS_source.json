@@ -1,5 +1,5 @@
 {
-	"name": "Getmetadata_source",
+	"name": "Getmetadata_DS_source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

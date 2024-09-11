@@ -65,7 +65,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "source_DS_get_specific_size_files",
+									"referenceName": "metadata2_DS_get_specific_size_files",
 									"type": "DatasetReference",
 									"parameters": {
 										"filename": {
@@ -154,7 +154,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "source_DS_get_specific_size_files",
+												"referenceName": "metadata2_DS_get_specific_size_files",
 												"type": "DatasetReference",
 												"parameters": {
 													"filename": {

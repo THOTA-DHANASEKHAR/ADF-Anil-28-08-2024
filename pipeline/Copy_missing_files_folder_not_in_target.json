@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_source",
+						"referenceName": "Getmetadata_DS_source",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_target",
+						"referenceName": "Getmetadata_DS_target",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
