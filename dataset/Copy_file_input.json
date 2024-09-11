@@ -5,11 +5,6 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"filename1": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "Copy_missing_files_folder_not_in_target"
 		},
@@ -18,10 +13,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().filename1",
-					"type": "Expression"
-				},
 				"fileSystem": "input"
 			},
 			"columnDelimiter": ",",
