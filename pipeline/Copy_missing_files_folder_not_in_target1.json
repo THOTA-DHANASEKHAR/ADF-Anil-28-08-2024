@@ -1,5 +1,5 @@
 {
-	"name": "Copy_missing_files_folder_not_in_target",
+	"name": "Copy_missing_files_folder_not_in_target1",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_DS_source",
+						"referenceName": "Getmetadata_source",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_DS_target",
+						"referenceName": "Getmetadata_target",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -64,7 +64,6 @@
 			},
 			{
 				"name": "Filter",
-				"description": "filter the files are not in target",
 				"type": "Filter",
 				"dependsOn": [
 					{
@@ -169,7 +168,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "Copy_folder_input",
+												"referenceName": "Copy_folder_input1",
 												"type": "DatasetReference",
 												"parameters": {
 													"Folder_name": {
@@ -181,8 +180,11 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Copy_folder_output",
-												"type": "DatasetReference"
+												"referenceName": "Copy_folder_output1",
+												"type": "DatasetReference",
+												"parameters": {
+													"folder1": "@item().name"
+												}
 											}
 										]
 									}
@@ -235,10 +237,10 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "Copy_file_input",
+												"referenceName": "Copy_file_input1",
 												"type": "DatasetReference",
 												"parameters": {
-													"filename1": {
+													"Current_file": {
 														"value": "@item().name",
 														"type": "Expression"
 													}
@@ -247,7 +249,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Copy_file_output",
+												"referenceName": "Copy_file_output1",
 												"type": "DatasetReference"
 											}
 										]
