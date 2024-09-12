@@ -1,5 +1,5 @@
 {
-	"name": "Source_input_files",
+	"name": "Source_DS__input_files",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

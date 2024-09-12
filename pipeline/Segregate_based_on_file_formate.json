@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "Segregate_based_on_file_formate",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Source_input_files",
+						"referenceName": "Source_DS__input_files",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -196,6 +196,9 @@
 			"File_formate": {
 				"type": "String"
 			}
+		},
+		"folder": {
+			"name": "Segregate_based_on_file_formate"
 		},
 		"annotations": []
 	}
