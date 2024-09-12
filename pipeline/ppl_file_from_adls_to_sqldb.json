@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "ppl_file_from_adls_to_sqldb",
 	"properties": {
 		"activities": [
 			{
