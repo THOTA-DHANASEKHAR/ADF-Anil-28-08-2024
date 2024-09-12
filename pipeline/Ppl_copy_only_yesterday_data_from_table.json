@@ -1,5 +1,5 @@
 {
-	"name": "Copy_only_yesterday_data_incremental_loading",
+	"name": "Ppl_copy_only_yesterday_data_from_table",
 	"properties": {
 		"activities": [
 			{
@@ -44,18 +44,21 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_DS_copy_only_text",
+						"referenceName": "Source_DS_copy_only_yesterday_data_from_table",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Target_DS_copy_Only_Text",
+						"referenceName": "Target_DS_copy_only_yesterday_data_from_table",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
+		"folder": {
+			"name": "Ppl_copy_only_yesterday_data_from_table"
+		},
 		"annotations": []
 	}
 }

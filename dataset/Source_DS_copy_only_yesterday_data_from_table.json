@@ -1,9 +1,12 @@
 {
-	"name": "Source_DS_copy_only_text",
+	"name": "Source_DS_copy_only_yesterday_data_from_table",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ds_copy_only_yesterday_data_from_table"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

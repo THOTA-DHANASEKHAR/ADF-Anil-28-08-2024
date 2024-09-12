@@ -5,6 +5,9 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Segregate_based_on_file_formate"
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {

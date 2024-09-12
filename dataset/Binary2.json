@@ -10,6 +10,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Segregate_based_on_file_formate"
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
