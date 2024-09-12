@@ -58,7 +58,7 @@
 			}
 		],
 		"folder": {
-			"name": "ppl_file_from_adls_to_sqldb"
+			"name": "copyl_file_from_adls_to_sqldb"
 		},
 		"annotations": []
 	}

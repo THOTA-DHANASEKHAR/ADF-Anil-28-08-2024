@@ -5,6 +5,9 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "DS_copy_file_from_adls_to_sqldb"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [

@@ -57,7 +57,7 @@
 			}
 		],
 		"folder": {
-			"name": "Ppl_copy_only_yesterday_data_from_table"
+			"name": "copy_only_yesterday_data_from_table"
 		},
 		"annotations": []
 	}
