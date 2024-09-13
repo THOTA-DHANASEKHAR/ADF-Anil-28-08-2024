@@ -17,14 +17,15 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select max(event_timestamp) A from dbo.events ;",
+						"sqlReaderQuery": "select max(event_timestamp) B from dbo.events;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "src_max_date",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -42,14 +43,15 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select max(event_timestamp) A from tds.events_new;",
+						"sqlReaderQuery": "select max(event_timestamp) B from tds.events_new;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "tgt_max_date",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -81,7 +83,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from [dbo].[events]\nwhere event_timestamp > '@{activity('tgt_tbl').output.[0].A}' \nand event_timestamp <= '@{activity('src_tbl').output.[0].A}';",
+							"value": "select * from [dbo].[events]\nwhere event_timestamp > '@{activity('tgt_tbl').output.value[0].B}' \nand event_timestamp <= '@{activity('src_tbl').output.value[0].B}';",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -166,6 +168,11 @@
 				}
 			}
 		],
+		"variables": {
+			"A": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
