@@ -245,6 +245,9 @@
 				]
 			}
 		},
+		"folder": {
+			"name": "Copy_all_tbls_from_asql"
+		},
 		"annotations": []
 	}
 }

@@ -10,6 +10,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "DS_copy_all_tbls_from_tbls"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
