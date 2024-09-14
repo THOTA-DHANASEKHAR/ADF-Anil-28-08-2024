@@ -1,0 +1,19 @@
+{
+	"name": "Tgt_asql_full_loading",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Full_loading"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "anil",
+			"table": "123"
+		}
+	}
+}
