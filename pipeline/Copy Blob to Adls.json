@@ -47,6 +47,9 @@
 				]
 			}
 		],
+		"folder": {
+			"name": "Copy_blob_to_adls"
+		},
 		"annotations": []
 	}
 }
