@@ -173,6 +173,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "Incremental_loading"
+		},
 		"annotations": []
 	}
 }
