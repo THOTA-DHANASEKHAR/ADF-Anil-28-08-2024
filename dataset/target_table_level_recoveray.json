@@ -1,0 +1,23 @@
+{
+	"name": "target_table_level_recoveray",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "@concat(formatdatetime(utcnow(),'yyyy'), '/',                 formatdatetime(utcnow(),'MMM'), '/',                 formatdatetime(utcnow(),'dd'))",
+				"fileSystem": "ouput"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
