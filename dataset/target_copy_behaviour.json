@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "merge.csv",
-				"folderPath": "CopyBehaviour",
+				"folderPath": "@concat(formatdatetime(utcnow(),'yyyy'), '/',                 formatdatetime(utcnow(),'MMM'), '/',                 formatdatetime(utcnow(),'dd'))",
 				"fileSystem": "ouput"
 			},
 			"columnDelimiter": ",",
