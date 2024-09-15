@@ -1,0 +1,30 @@
+{
+	"name": "pipeline4",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "aa",
+					"value": {
+						"value": "@concat(formatdatetime(adddays(utcnow(),-1),'yyyy'), '/',\n                formatdatetime(adddays(utcnow(),-1),'MMM'), '/',\n                formatdatetime(adddays(utcnow(),-1),'dd'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"aa": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}

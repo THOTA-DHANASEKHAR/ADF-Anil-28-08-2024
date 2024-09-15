@@ -1,5 +1,5 @@
 {
-	"name": "pipeline3",
+	"name": "ppl_table-level_recovery",
 	"properties": {
 		"activities": [
 			{
@@ -184,6 +184,14 @@
 				}
 			}
 		],
+		"variables": {
+			"aa": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Table_level_recovery"
+		},
 		"annotations": []
 	}
 }
