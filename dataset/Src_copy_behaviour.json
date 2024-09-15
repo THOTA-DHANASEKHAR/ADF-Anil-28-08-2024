@@ -5,6 +5,9 @@
 			"referenceName": "Datasciencepro",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Merge_files"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
