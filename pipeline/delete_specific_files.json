@@ -57,6 +57,9 @@
 				]
 			}
 		},
+		"folder": {
+			"name": "Delete_specific_files"
+		},
 		"annotations": []
 	}
 }

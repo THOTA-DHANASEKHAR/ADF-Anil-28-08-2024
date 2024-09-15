@@ -28,6 +28,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Delete_all_files"
+		},
 		"annotations": []
 	}
 }

@@ -10,6 +10,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Delete-specific_files"
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {

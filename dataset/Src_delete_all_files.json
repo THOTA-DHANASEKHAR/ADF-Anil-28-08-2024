@@ -5,6 +5,9 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Delete_all_files"
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {

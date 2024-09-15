@@ -86,6 +86,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Delete_files_using_controlled_file"
+		},
 		"annotations": []
 	}
 }
