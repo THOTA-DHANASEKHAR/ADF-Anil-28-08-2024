@@ -1,0 +1,30 @@
+{
+	"name": "target_copy_behaviour1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Merge_files"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "merge.csv",
+				"folderPath": {
+					"value": "@concat(formatdatetime(utcnow(),'yyyy'), '/',                 formatdatetime(utcnow(),'MMM'), '/',                 formatdatetime(utcnow(),'dd'))",
+					"type": "Expression"
+				},
+				"fileSystem": "ouput"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
