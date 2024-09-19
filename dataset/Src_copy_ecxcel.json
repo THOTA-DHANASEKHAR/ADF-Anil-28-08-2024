@@ -5,13 +5,21 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Sheet_name": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Sheet1",
+			"sheetName": {
+				"value": "@dataset().Sheet_name",
+				"type": "Expression"
+			},
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Apple_Singlele_sheets.xlsx",
+				"fileName": "Apple_Multiple_sheets.xlsx",
 				"fileSystem": "input"
 			}
 		},
