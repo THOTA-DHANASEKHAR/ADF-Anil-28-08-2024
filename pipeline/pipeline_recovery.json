@@ -169,6 +169,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Pipeline_recovery"
+		},
 		"annotations": []
 	}
 }
