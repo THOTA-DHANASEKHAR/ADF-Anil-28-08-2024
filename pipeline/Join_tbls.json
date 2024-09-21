@@ -27,6 +27,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Join_tbls"
+		},
 		"annotations": []
 	}
 }

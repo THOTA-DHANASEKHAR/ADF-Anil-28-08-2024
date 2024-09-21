@@ -9,14 +9,14 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "asql_join_input_emp",
+						"referenceName": "join_tbls_input_emp",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
 				},
 				{
 					"dataset": {
-						"referenceName": "asql_join_input_dept",
+						"referenceName": "join_tbls_input_dept",
 						"type": "DatasetReference"
 					},
 					"name": "source2"

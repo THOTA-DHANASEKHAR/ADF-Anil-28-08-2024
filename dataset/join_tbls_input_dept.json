@@ -1,9 +1,12 @@
 {
-	"name": "asql_join_input_dept",
+	"name": "join_tbls_input_dept",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "join_tbls"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
