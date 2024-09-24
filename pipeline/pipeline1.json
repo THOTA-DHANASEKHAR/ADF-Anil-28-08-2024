@@ -76,7 +76,14 @@
 						{
 							"name": "Get Metadata1",
 							"type": "GetMetadata",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -91,7 +98,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"fname": {
-											"value": "@item().name",
+											"value": "@variables('filename')",
 											"type": "Expression"
 										}
 									}
@@ -102,6 +109,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -128,7 +136,7 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "filename",
+										"name": "lastmodified",
 										"type": "SetVariable",
 										"dependsOn": [],
 										"policy": {
@@ -137,14 +145,48 @@
 										},
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "filename1",
+											"variableName": "lastmodified",
 											"value": {
 												"value": "@activity('Get Metadata1').output.lastModified",
 												"type": "Expression"
 											}
 										}
+									},
+									{
+										"name": "fn1",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"policy": {
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "fn1",
+											"value": {
+												"value": "@variables('filename')",
+												"type": "Expression"
+											}
+										}
 									}
 								]
+							}
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "filename",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
+								}
 							}
 						}
 					]
@@ -208,7 +250,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"currentfile": {
-								"value": "@variables('filename1')",
+								"value": "@variables('fn1')",
 								"type": "Expression"
 							}
 						}
@@ -230,7 +272,10 @@
 				"type": "String",
 				"defaultValue": "\"0000-00-00T00:00:00Z\""
 			},
-			"filename1": {
+			"filename": {
+				"type": "String"
+			},
+			"fn1": {
 				"type": "String"
 			}
 		},
