@@ -10,6 +10,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Copy_missing_files_folder_not_in_target"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
