@@ -1,9 +1,9 @@
 {
-	"name": "Copy_missing_files_folder_not_in_target",
+	"name": "copy_missing_files",
 	"properties": {
 		"activities": [
 			{
-				"name": "source_files",
+				"name": "source",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -16,14 +16,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_DS_source",
+						"referenceName": "sourc_gmta1",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"childItems"
+						"childItems",
+						"itemType"
 					],
 					"storeSettings": {
-						"type": "AzureBlobFSReadSettings",
+						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
@@ -33,7 +34,7 @@
 				}
 			},
 			{
-				"name": "sink_files",
+				"name": "sink",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -46,14 +47,14 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Getmetadata_DS_target",
+						"referenceName": "src_exixt_mdta1",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
 					],
 					"storeSettings": {
-						"type": "AzureBlobFSReadSettings",
+						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
@@ -63,18 +64,17 @@
 				}
 			},
 			{
-				"name": "Filter",
-				"description": "filter the files are not in target",
+				"name": "Filter1",
 				"type": "Filter",
 				"dependsOn": [
 					{
-						"activity": "sink_files",
+						"activity": "source",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "source_files",
+						"activity": "sink",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -83,21 +83,21 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('source_files').output.childItems",
+						"value": "@activity('source').output.childItems",
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@not(contains(activity('sink_files').output.childItems, item()))",
+						"value": "@not(contains(activity('sink').output.childItems,item()))",
 						"type": "Expression"
 					}
 				}
 			},
 			{
-				"name": "ForEach",
+				"name": "ForEach1",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Filter",
+						"activity": "Filter1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -106,23 +106,31 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Filter').output.value",
+						"value": "@activity('Filter1').output.value",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
-							"name": "If Condition",
+							"name": "If Condition1",
 							"type": "IfCondition",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().type, 'File')",
+									"value": "@equals(item().type,'Folder')",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
 									{
-										"name": "Copy folder",
+										"name": "Copy data2",
 										"type": "Copy",
 										"dependsOn": [],
 										"policy": {
@@ -138,6 +146,73 @@
 												"type": "DelimitedTextSource",
 												"storeSettings": {
 													"type": "AzureBlobFSReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings",
+													"copyBehavior": "PreserveHierarchy"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "source_ds_missingfile1",
+												"type": "DatasetReference",
+												"parameters": {
+													"file": {
+														"value": "@variables('item')",
+														"type": "Expression"
+													}
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "missing_files_sink1",
+												"type": "DatasetReference"
+											}
+										]
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "Copy data1",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
 													"wildcardFileName": "*",
 													"enablePartitionDiscovery": false
@@ -149,7 +224,8 @@
 											"sink": {
 												"type": "DelimitedTextSink",
 												"storeSettings": {
-													"type": "AzureBlobFSWriteSettings"
+													"type": "AzureBlobFSWriteSettings",
+													"copyBehavior": "PreserveHierarchy"
 												},
 												"formatSettings": {
 													"type": "DelimitedTextWriteSettings",
@@ -169,11 +245,11 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "Copy_folder_input",
+												"referenceName": "copy_missngfile1",
 												"type": "DatasetReference",
 												"parameters": {
-													"Folder_name": {
-														"value": "@item().name",
+													"Folder": {
+														"value": "@variables('item')",
 														"type": "Expression"
 													}
 												}
@@ -181,78 +257,46 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Copy_folder_output",
-												"type": "DatasetReference"
-											}
-										]
-									}
-								],
-								"ifTrueActivities": [
-									{
-										"name": "Copy file",
-										"type": "Copy",
-										"dependsOn": [],
-										"policy": {
-											"timeout": "0.12:00:00",
-											"retry": 0,
-											"retryIntervalInSeconds": 30,
-											"secureOutput": false,
-											"secureInput": false
-										},
-										"userProperties": [],
-										"typeProperties": {
-											"source": {
-												"type": "DelimitedTextSource",
-												"storeSettings": {
-													"type": "AzureBlobFSReadSettings",
-													"recursive": true,
-													"enablePartitionDiscovery": false
-												},
-												"formatSettings": {
-													"type": "DelimitedTextReadSettings"
+												"referenceName": "missing_files_sink_copy1",
+												"type": "DatasetReference",
+												"parameters": {
+													"Folder": {
+														"value": "@variables('item')",
+														"type": "Expression"
+													}
 												}
-											},
-											"sink": {
-												"type": "DelimitedTextSink",
-												"storeSettings": {
-													"type": "AzureBlobFSWriteSettings"
-												},
-												"formatSettings": {
-													"type": "DelimitedTextWriteSettings",
-													"quoteAllText": true,
-													"fileExtension": ".txt"
-												}
-											},
-											"enableStaging": false,
-											"translator": {
-												"type": "TabularTranslator",
-												"typeConversion": true,
-												"typeConversionSettings": {
-													"allowDataTruncation": true,
-													"treatBooleanAsNumber": false
-												}
-											}
-										},
-										"inputs": [
-											{
-												"referenceName": "Copy_file_input",
-												"type": "DatasetReference"
-											}
-										],
-										"outputs": [
-											{
-												"referenceName": "Copy_file_output",
-												"type": "DatasetReference"
 											}
 										]
 									}
 								]
+							}
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "item",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
+								}
 							}
 						}
 					]
 				}
 			}
 		],
+		"variables": {
+			"item": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Copy_missing_files_folder_not_in_target"
 		},
